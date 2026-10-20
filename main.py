@@ -18,10 +18,10 @@ from aiogram.types import CallbackQuery
 from database import init_db
 
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 if not TOKEN:
-    raise ValueError("Не задана переменная окружения BOT_TOKEN")
+    raise ValueError("Не задана переменная окружения TELEGRAM_BOT_TOKEN")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
