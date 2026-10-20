@@ -1,5 +1,4 @@
-"aiogram
+aiogram
 aiohttp
 aiosqlite
-beautifulsoup4" 
-| Set-Content -Encoding utf8 requirements.txt
+beautifulsoup4
