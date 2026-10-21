@@ -174,6 +174,8 @@ async def show_schedule(message, target_date: date):
             f"🕒 <b>{lesson['start']}–{lesson['end']}</b>"
         )
         lines.append(f"📖 {lesson['subject']}")
+        if lesson.get("type"):
+            lines.append(f"📝 {lesson['type']}")
 
         if lesson.get("room"):
             lines.append(f"📍 {lesson['room']}")

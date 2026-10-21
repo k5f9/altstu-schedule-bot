@@ -57,6 +57,20 @@ def parse_schedule(html: str) -> dict[str, list[dict]]:
                 for value in nobrs
             ]
 
+            lesson_type_match = re.search(
+                r"\((л\.р\.|л\.|пр\.)",
+                text
+            )
+
+            lesson_type = None
+
+            if lesson_type_match:
+                lesson_type = {
+                    "л.": "Лекция",
+                    "пр.": "Практика",
+                    "л.р.": "Лабораторная работа",
+                }.get(lesson_type_match.group(1))
+            
             lesson = {
                 "start": time_match.group(1),
                 "end": time_match.group(2),
@@ -65,6 +79,7 @@ def parse_schedule(html: str) -> dict[str, list[dict]]:
                 "room": None,
                 "teacher": None,
                 "subgroup": None,
+                "type": lesson_type,
             }
 
             for value in nobrs:
